@@ -1,7 +1,9 @@
-package anglutestas;
+package anglutestas.ENLT;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
@@ -21,14 +23,13 @@ public class AngluTestas extends JFrame implements ActionListener {
 	JButton next = new JButton("Sekantis");
 	JButton end = new JButton("Pabaigti");
 
-	JTextArea question = new JTextArea(2, 25);
+	JTextArea question = new JTextArea(4, 25);
 	JLabel ql = new JLabel("Klausimas");
-	JTextField answer = new JTextField(10);
+	JTextArea answer = new JTextArea(4, 25);
 	JLabel al = new JLabel("Atsakymas");
-	
+
 	JTextArea correctAnswer = new JTextArea(2, 25);
 
-	
 	JLabel tsk = new JLabel(taskai + "");
 
 	String response = "";
@@ -47,23 +48,33 @@ public class AngluTestas extends JFrame implements ActionListener {
 
 	public AngluTestas() {
 		super("Anglu Testas");
-		setSize(640, 280);
+		setSize(640, 480);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		Collections.shuffle(Arrays.asList(kk));
+
+		// create new Font
+		Font font = new Font("Courier", Font.BOLD, 22);
 		
+		
+		 question.setFont(font);
+		 answer.setFont(font);
+		 correctAnswer.setFont(font);
+
+		Collections.shuffle(Arrays.asList(kk));
+
 		JPanel panel = new JPanel();
-		contentPane.add(panel, BorderLayout.WEST);
+		contentPane.add(panel, BorderLayout.NORTH);
 		panel.add(ql);
 		panel.add(question);
 		question.setColumns(20);
 		question.setEditable(false);
 
 		JPanel panel_1 = new JPanel();
-		contentPane.add(panel_1, BorderLayout.EAST);
+		contentPane.add(panel_1, BorderLayout.CENTER);
 		panel_1.add(al);
 		panel_1.add(answer);
 		answer.setColumns(20);
